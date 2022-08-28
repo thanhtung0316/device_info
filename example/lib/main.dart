@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _deviceName = deviceInfo?['deviceName']??'deviceName null';
+      _deviceName = deviceInfo?['deviceName']?.toString()??'deviceName null';
     });
   }
 

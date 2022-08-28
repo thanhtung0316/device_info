@@ -9,7 +9,8 @@ class MockDeviceInfoPlatform
     implements DeviceInfoPlatform {
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<String?> getDeviceInfo() => Future.value('42');
+
 }
 
 void main() {
@@ -24,6 +25,6 @@ void main() {
     MockDeviceInfoPlatform fakePlatform = MockDeviceInfoPlatform();
     DeviceInfoPlatform.instance = fakePlatform;
   
-    expect(await deviceInfoPlugin.getPlatformVersion(), '42');
+    expect(await deviceInfoPlugin.getDeviceInfo(), '42');
   });
 }

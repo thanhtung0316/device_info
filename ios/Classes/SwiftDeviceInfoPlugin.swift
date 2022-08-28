@@ -9,6 +9,21 @@ public class SwiftDeviceInfoPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+      
+      guard call.method == "getDeviceInfo" else{
+          result(FlutterMethodNotImplemented)
+          return
+      }
+      
+      let device = UIDevice.current
+      
+      var deviceInfo = [String : String]()
+      deviceInfo["deviceName"]=device.name
+      deviceInfo["manufacturer"]="Apple"
+      deviceInfo["iosVersion"]=device.systemVersion
+      deviceInfo["brand"]=device.localizedModel
+      deviceInfo["batteryLevel"]=String(device.batteryLevel)
+      deviceInfo["OS"]=device.systemName
+    result(deviceInfo)
   }
 }
